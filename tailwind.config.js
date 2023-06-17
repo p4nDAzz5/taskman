@@ -5,6 +5,13 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  theme: {},
+  theme: {
+    extend: {
+      boxShadow: {
+        'sm': '5px 5px gray ',
+        'md': '10px 10px gray ',
+      }
+    }
+  },
   plugins: [],
 }
