@@ -1,33 +1,42 @@
 "use client"
 import React from 'react'
 import ".//globals.css"
-import CreateStage from './components/CreateStage';
-import CreatePost from './components/CreatePost';
+import Stages from './components/Stages';
 import { useState } from 'react';
+// import { useDrag, useDrop } from 'react-dnd';
 
 import { Sketch } from '@uiw/react-color';
-  
+
+type Post = {
+  title: string;
+  body: string;
+};
+
 export default function DraggableComponents() {
-  const [stages, setStages] = useState(["Stage:"]);
-  const [posts, setPosts] = useState<string[]>([]);
+  const [stages, setStages] = useState<Array<Array<Post>>>([[]]);
+  // const draggables = document.querySelectorAll("#post");
+  // const containers = document.querySelectorAll("#stage");
+
+  // draggables.forEach(draggable => {
+  //   draggable.addEventListener('dragstart', () => {
+  //     console.log('Drag Start')
+  //   })
+  // })
+
+
+  console.log(stages);
 
   function decreaseStages(){
     if(stages.length <= 1){
-      setStages(["Stage:"]);
+      setStages([[]]);
     }
     else{
       setStages([...stages.slice(0, -1)]);
     }
   }
-  function increaseStages(){
-    setStages(stages.concat(["Stage:"]));
-  }
 
-  function decreasePosts(){
-    setPosts([...posts.slice(0, -1)]);
-  }
-  function increasePosts(){
-    setPosts(posts.concat(["Post:"]));
+  function increaseStages(){
+    setStages(stages.concat([[]]));
   }
 
   const [hex, setHex] = useState("#fff");
@@ -41,8 +50,8 @@ export default function DraggableComponents() {
   return (
     <div>
       <div className='grid grid-flow-col'>
-        <button onClick={() => {decreaseStages(), decreasePosts()}} className='border-2 border-black p-2'>less</button>
-        <button onClick={() => {increaseStages(), increasePosts()}} className='border-2 border-black p-2'>more</button>
+        <button onClick={() => {decreaseStages()}} className='border-2 border-black p-2'>less</button>
+        <button onClick={() => {increaseStages()}} className='border-2 border-black p-2'>more</button>
         <Sketch
             style={{ 
               // margin: "auto",
@@ -51,24 +60,19 @@ export default function DraggableComponents() {
             }}
             color={hex}
             onChange={(color) => {
-              console.log(color)
+              // console.log(color);
               setHex(color.hex);
-              myFunction_set(color.hexa)
+              myFunction_set(color.hexa);
             }}
         />
       </div>
       
-      <div id="bg" className='bg-slate-500 w-fill grid grid-flow-col h-screen'>
+      <div id="bg" className='bg-slate-500 w-fill grid grid-flow-col min-h-screen max-h-fit'>
         
-        <CreateStage
+        <Stages
           stages={stages}
-        />
-
-        <CreatePost
-          posts={posts}
-        />
-
-        
+          setStages={setStages}
+        /> 
 
       </div>
     </div>

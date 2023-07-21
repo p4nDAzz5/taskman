@@ -5,3 +5,9 @@
 :root {
   --post-color: #fff;
 }
+
+@layer base {
+  .draggable.dragging {
+    @apply opacity-50;
+  }
+}
