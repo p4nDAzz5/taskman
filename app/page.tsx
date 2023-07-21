@@ -13,7 +13,7 @@ type Post = {
 };
 
 export default function DraggableComponents() {
-  const [stages, setStages] = useState<Array<Array<Post>>>([[]]);
+  const [stages, setStages] = useState<Array<Array<Post>>>([[{title: "Jo", body: "Mama"}]]);
   // const draggables = document.querySelectorAll("#post");
   // const containers = document.querySelectorAll("#stage");
 
