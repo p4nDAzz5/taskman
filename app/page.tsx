@@ -13,18 +13,9 @@ type Post = {
 };
 
 export default function DraggableComponents() {
-  const [stages, setStages] = useState<Array<Array<Post>>>([[{title: "Jo", body: "Mama"}]]);
-  // const draggables = document.querySelectorAll("#post");
-  // const containers = document.querySelectorAll("#stage");
+  const [stages, setStages] = useState<Array<Array<Post>>>([[{title: "Lorem Ipsum", body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."}]]);
 
-  // draggables.forEach(draggable => {
-  //   draggable.addEventListener('dragstart', () => {
-  //     console.log('Drag Start')
-  //   })
-  // })
-
-
-  console.log(stages);
+  // console.log(stages);
 
   function decreaseStages(){
     if(stages.length <= 1){
@@ -34,7 +25,6 @@ export default function DraggableComponents() {
       setStages([...stages.slice(0, -1)]);
     }
   }
-
   function increaseStages(){
     setStages(stages.concat([[]]));
   }
@@ -60,7 +50,6 @@ export default function DraggableComponents() {
             }}
             color={hex}
             onChange={(color) => {
-              // console.log(color);
               setHex(color.hex);
               myFunction_set(color.hexa);
             }}
